@@ -9,14 +9,13 @@ import static org.junit.Assert.assertEquals;
 
 public class IngredientTest extends BaseTest {
 
-    Ingredient ingredient;
-
-    float price = RandomUtils.nextFloat();
-    String name = RandomStringUtils.randomAlphabetic(8);
-    IngredientType ingredientType = IngredientType.SAUCE;
+    private final float price = RandomUtils.nextFloat();
+    private final String name = RandomStringUtils.randomAlphabetic(8);
+    private final IngredientType ingredientType = IngredientType.SAUCE;
+    private Ingredient ingredient;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         ingredient = new Ingredient(ingredientType, name, price);
     }
 

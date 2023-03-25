@@ -1,60 +1,55 @@
 package praktikum;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest extends BaseTest {
-
+    private Burger burgerReal;
     @Mock
-    Burger burgerMock;
-    Burger burgerReal;
+    private Bun bun;
     @Mock
-    Bun bun;
-    @Mock
-    Ingredient ingredient;
+    private Ingredient ingredient;
 
     @Test
     public void setBuns() {
-        burgerMock.setBuns(bun);
-        Mockito.verify(burgerMock, Mockito.times(1)).setBuns(bun);
+        burgerReal = new Burger();
+        Bun bunReal = new Bun(RandomStringUtils.randomAlphabetic(8), RandomUtils.nextFloat());
+        burgerReal.setBuns(bunReal);
+        assertEquals(burgerReal.bun, bunReal);
     }
 
     @Test
     public void addIngredient() {
         burgerReal = new Burger();
-        Burger burgerSpy = spy(burgerReal);
         burgerReal.addIngredient(ingredient);
-        assertEquals("Количество ингридиентов неверное", 1, burgerSpy.ingredients.size());
+        assertEquals("Количество ингридиентов неверное", 1, burgerReal.ingredients.size());
     }
 
     @Test
     public void removeIngredient() {
         burgerReal = new Burger();
-        Burger burgerSpy = spy(burgerReal);
         burgerReal.addIngredient(ingredient);
-        assertEquals(1, burgerSpy.ingredients.size());
+        assertEquals(1, burgerReal.ingredients.size());
         burgerReal.removeIngredient(0);
-        assertEquals("Количество ингридиентов неверное", 0, burgerSpy.ingredients.size());
+        assertEquals("Количество ингридиентов неверное", 0, burgerReal.ingredients.size());
     }
 
     @Test
     public void moveIngredient() {
         burgerReal = new Burger();
-        Burger burgerSpy = spy(burgerReal);
         burgerReal.addIngredient(ingredient);
         burgerReal.addIngredient(ingredient);
-        assertEquals(2, burgerSpy.ingredients.size());
+        assertEquals(2, burgerReal.ingredients.size());
         burgerReal.moveIngredient(0, 1);
-        assertEquals("Количество ингридиентов неверное", 2, burgerSpy.ingredients.size());
+        assertEquals("Количество ингридиентов неверное", 2, burgerReal.ingredients.size());
     }
 
     @Test

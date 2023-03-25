@@ -1,5 +1,5 @@
 package praktikum;
 
 public class BaseTest {
-    float FLOAT_DELTA = 0.001F;
+    public static final float FLOAT_DELTA = 0.001F;
 }

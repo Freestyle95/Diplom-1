@@ -15,8 +15,8 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class BurgerParameterizedTest extends BaseTest {
 
-    Bun bun;
-    List<Ingredient> ingredients;
+    private final Bun bun;
+    private final List<Ingredient> ingredients;
 
     public BurgerParameterizedTest(String name, Bun bun, List<Ingredient> ingredients) {
         this.bun = bun;
@@ -24,7 +24,7 @@ public class BurgerParameterizedTest extends BaseTest {
     }
 
     @Parameterized.Parameters(name = "Ингридиенты: {0}")
-    public static Object[][] getKittensData() {
+    public static Object[][] getBurgerIngredientsData() {
         return new Object[][]{
                 {
                         "бургер с одним ингридиентом",
